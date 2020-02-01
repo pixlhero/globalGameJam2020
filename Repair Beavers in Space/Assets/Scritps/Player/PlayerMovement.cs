@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
+
         // weird fix. don't judge me. :'(
         direction = new Vector2(direction.y, -direction.x);
 
