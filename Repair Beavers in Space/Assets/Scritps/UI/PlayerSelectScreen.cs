@@ -14,6 +14,12 @@ public class PlayerSelectScreen : UIScreen{
     }
     private void Update()
     {
+        if (Input.GetButtonDown("Flap1"))
+        {
+            UIManager.Singleton.SwitchToState(UIManager.UIState.CUTSCENES);
+        }
+
+
         if (Input.GetButtonDown("Start"))
         {
             UIManager.Singleton.SwitchToState(UIManager.UIState.CUTSCENES);
