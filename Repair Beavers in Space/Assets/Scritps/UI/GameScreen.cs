@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSelectScreen : UIScreen{
+public class GameScreen : UIScreen
+{
     public override void Hide()
     {
         this.gameObject.SetActive(false);
@@ -16,7 +17,7 @@ public class PlayerSelectScreen : UIScreen{
     {
         if (Input.GetButtonDown("Start"))
         {
-            UIManager.Singleton.SwitchToState(UIManager.UIState.CUTSCENES);
+            UIManager.Singleton.SwitchToState(UIManager.UIState.WIN);
         }
     }
 }

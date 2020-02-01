@@ -18,7 +18,7 @@ public class TitleScreen : UIScreen
     private void Update()
     {
         if(Input.GetButtonDown("Start")){
-            Debug.Log("start");
+            UIManager.Singleton.SwitchToState(UIManager.UIState.PLAYER_SELECT);
         }
     }
 }
