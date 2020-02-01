@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7424144350454804042}
   - component: {fileID: 959235885395262899}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Asteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3140515301790403636}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &3140515301790403638
 MeshRenderer:
   m_ObjectHideFlags: 0

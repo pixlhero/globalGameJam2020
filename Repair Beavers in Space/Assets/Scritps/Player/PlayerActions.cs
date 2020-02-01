@@ -18,7 +18,7 @@ public class PlayerActions : MonoBehaviour
 
         if (Input.GetButtonDown("Grab"))
         {
-            playerGrabbing.TryGrabbing();
+            playerGrabbing.ToggleGrabRelease();
         }
 
         Vector2 direction = Vector2.one;

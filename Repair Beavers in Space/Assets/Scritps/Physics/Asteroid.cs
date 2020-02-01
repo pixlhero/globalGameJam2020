@@ -16,10 +16,11 @@ public class Asteroid : SpaceObject
 
     private void CreateDamage()
     {
+        //Spawn Spaceship Hulldamage
+        Spaceship.Instance.CreateHullDamage(transform.position);
         //Despawn this object
         //Create explotion fx
         Explode();
-        //Spawn Spaceship Hulldamage
     }
 
     void Explode()

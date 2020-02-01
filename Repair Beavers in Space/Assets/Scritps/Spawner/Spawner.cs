@@ -9,7 +9,8 @@ public class Spawner : MonoBehaviour
     public float aspectRatio = 1;
 
     #region Test
-    public GameObject testPrefab;
+    public GameObject asteroidPrefab;
+    public GameObject logPrefab;
 
     float time;
     public float testDeltaTime = 1;
@@ -22,10 +23,13 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
+        //For Testing Purposes
         if (Time.time > time + testDeltaTime)
         {
             time = Time.time;
-            SpawnObj(testPrefab);
+            SpawnObj(asteroidPrefab);
+            SpawnObj(logPrefab);
+            SpawnObj(logPrefab);
         }        
     }
 

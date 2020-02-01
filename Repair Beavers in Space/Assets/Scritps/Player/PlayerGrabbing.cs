@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class PlayerGrabbing : MonoBehaviour
 {
 
     public Transform grabAnchor;
+    public Transform releaseAnchor;
 
     private Grabbable newestGrabbable;
     private Grabbable heldObject;
@@ -22,20 +24,39 @@ public class PlayerGrabbing : MonoBehaviour
         
     }
 
-    public void TryGrabbing()
+    public void ToggleGrabRelease()
     {
-        if(this.newestGrabbable != null)
+        if (heldObject == null)
         {
-            ExecuteGrab(this.newestGrabbable);
-            this.newestGrabbable = null;
+            if (this.newestGrabbable != null)
+            {
+                ExecuteGrab(this.newestGrabbable);
+                this.newestGrabbable = null;
+            }
+        }
+        else
+        {
+            ExecuteRelease();
         }
     }
 
     private void ExecuteGrab(Grabbable grabbable)
     {
-        grabbable.rigidbody.isKinematic = true;
+        grabbable.TogglePhysics(false);
         grabbable.transform.SetParent(grabAnchor);
         grabbable.transform.localPosition = Vector3.zero;
+        grabbable.transform.localRotation = Quaternion.identity;
+
+        heldObject = grabbable;
+    }
+
+    private void ExecuteRelease()
+    {
+        heldObject.transform.position = releaseAnchor.position;
+        heldObject.transform.parent = null;
+        heldObject.TogglePhysics(true);
+
+        heldObject = null;
     }
 
     // these 2 methods should be reworked later

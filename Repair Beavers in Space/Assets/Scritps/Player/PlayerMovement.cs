@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,13 +9,18 @@ public class PlayerMovement : MonoBehaviour
     public float force;
 
     public float maxVelocity;
+    public float turnSpeed = 100;
 
     private Rigidbody2D _rigidbody;
+    private DistanceJoint2D _distJoint;
 
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _distJoint = GetComponent<DistanceJoint2D>();
+
+        ConnectToSafetyLine(FindObjectOfType<Safetyline>());    //For Testing Purposes
     }
 
     private void Update()
@@ -47,9 +53,14 @@ public class PlayerMovement : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget);
 
         // changed this from a lerp to a RotateTowards because you were supplying a "speed" not an interpolation value
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 100 * Time.deltaTime);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
 
 
         //this.transform.rotation = Quaternion.LookRotation(direction3, Vector3.forward);
+    }
+    
+    private void ConnectToSafetyLine(Safetyline safetyline)
+    {
+        _distJoint.connectedBody = safetyline.chainEnd;
     }
 }
