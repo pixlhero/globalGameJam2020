@@ -80,7 +80,7 @@ public class PlayerActions : MonoBehaviour
 
     public void Paralyze()
     {
-        if (!paralyzed)
+        if (!paralyzed && CanBeParalyzed())
         {
             paralyzed = true;
             paralyzeTime = maxParalyzeTime;
