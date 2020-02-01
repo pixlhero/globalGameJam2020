@@ -12,7 +12,7 @@ public class Safetyline : MonoBehaviour
 
     public Rigidbody2D chainEnd;
 
-    void Start()
+    void Awake()
     {
         int chainLinkCount = Mathf.RoundToInt(length / chainLinkSize);
 

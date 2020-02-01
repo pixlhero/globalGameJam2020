@@ -54,6 +54,8 @@ public class PlayerActions : MonoBehaviour
                 direction.x = Input.GetAxis("Horizontal");
                 direction.y = Input.GetAxis("Vertical");
 
+                Debug.Log(direction);
+
                 playerMovement.AdjustDirection(direction);
                 break;
 
