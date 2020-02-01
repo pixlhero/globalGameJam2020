@@ -41,6 +41,5 @@ public class Grabbable : MonoBehaviour
     {
         _rigidbody.isKinematic = !on;
         _rigidbody.simulated = on;
-        collider.enabled = on;
     }
 }

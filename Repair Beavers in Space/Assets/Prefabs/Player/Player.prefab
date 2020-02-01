@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 4079658687753334506}
   - component: {fileID: 5966989611939399800}
   - component: {fileID: 1216606932}
+  - component: {fileID: 1216606925}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -143,11 +144,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4288c684b17c2c4a994ecfadc71ab71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
   playerMovement: {fileID: 4079658687753334506}
   playerGrabbing: {fileID: 2783434565764935009}
-  hullDamage: {fileID: 0}
-  currentlyRepairing: {fileID: 0}
+  playerRepairState: {fileID: 1216606925}
 --- !u!50 &4079658687753334517
 Rigidbody2D:
   serializedVersion: 4
@@ -219,6 +218,21 @@ DistanceJoint2D:
   m_AutoConfigureDistance: 0
   m_Distance: 0.5
   m_MaxDistanceOnly: 1
+--- !u!114 &1216606925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4079658687753334505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3383a04a944361d43b22f114c0c263aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 4079658687753334517}
+  hullDamage: {fileID: 0}
+  currentlyRepairing: {fileID: 0}
 --- !u!1 &4079658688718006692
 GameObject:
   m_ObjectHideFlags: 0

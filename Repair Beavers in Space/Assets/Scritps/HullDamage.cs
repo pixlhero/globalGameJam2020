@@ -38,7 +38,7 @@ public class HullDamage : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            var playerActions = collision.GetComponent<PlayerActions>();
+            var playerActions = collision.GetComponent<PlayerRepairState>();
 
             playerActions.HullDamageIsNear(this);
         }
@@ -47,7 +47,7 @@ public class HullDamage : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            var playerActions = collision.GetComponent<PlayerActions>();
+            var playerActions = collision.GetComponent<PlayerRepairState>();
 
             playerActions.HullDamageIsNoLongerNear(this);
         }

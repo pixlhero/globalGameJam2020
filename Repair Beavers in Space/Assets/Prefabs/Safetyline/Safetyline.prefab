@@ -68,6 +68,6 @@ MonoBehaviour:
   rigi: {fileID: 946757324284517807}
   chainLinkPrefab: {fileID: 7564324252868743900, guid: 567fd540ff1a20345a1ebe5eaa36318f,
     type: 3}
-  chainLinkSize: 0.15
+  chainLinkSize: 0.1
   length: 4
   chainEnd: {fileID: 0}
