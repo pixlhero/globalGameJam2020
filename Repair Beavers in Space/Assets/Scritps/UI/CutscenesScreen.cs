@@ -25,7 +25,7 @@ public class CutscenesScreen : UIScreen
 
         FindObjectOfType<SkyboxRotation>().SpeedUpShortly();
 
-        cutsceneParent.DOMoveX(cutsceneParent.position.x - 700, 1.5f).OnComplete(() => {
+        cutsceneParent.DOMoveX(cutsceneParent.position.x - 700, 1.5f).SetEase(Ease.InSine).OnComplete(() => {
             this.gameObject.SetActive(false);
         });
 
@@ -64,11 +64,11 @@ public class CutscenesScreen : UIScreen
 
                 CanvasGroup group = cutsceneParent.GetComponent<CanvasGroup>();
 
-                group.DOFade(0, 1.5f).OnComplete(() => {
+                group.DOFade(0, 1.5f).SetEase(Ease.InSine).OnComplete(() => {
                     group.DOFade(1, 1.5f);
                 });
 
-                cutsceneParent.DOMoveX(cutsceneParent.position.x - 300, 1.5f).OnComplete(() => {
+                cutsceneParent.DOMoveX(cutsceneParent.position.x - 300, 1.5f).SetEase(Ease.InSine).OnComplete(() => {
                     CutsceneImage.sprite = cutscenesInOrder[currentCutsceneIndex];
                     cutsceneParent.position = cutsceneParent.position + new Vector3(600, 0, 0);
                     cutsceneParent.DOMoveX(cutsceneParent.position.x - 300, 1.5f).OnComplete(() => {

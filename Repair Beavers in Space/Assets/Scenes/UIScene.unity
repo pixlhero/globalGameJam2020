@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1.0039052, g: 1.0039052, b: 1.0039052, a: 1}
+  m_IndirectSpecularColor: {r: 0.5821479, g: 0.4346122, b: 0.8357668, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -993,6 +993,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 661757669}
+  - component: {fileID: 661757670}
   m_Layer: 5
   m_Name: CutsceneParent
   m_TagString: Untagged
@@ -1021,6 +1022,18 @@ RectTransform:
   m_AnchoredPosition: {x: -0.000015259, y: 0.00019073}
   m_SizeDelta: {x: 800, y: 449.58}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &661757670
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661757668}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &751999876
 GameObject:
   m_ObjectHideFlags: 0
@@ -2752,6 +2765,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1775325778}
   - component: {fileID: 1775325779}
+  - component: {fileID: 1775325780}
   m_Layer: 5
   m_Name: PlayerSelect
   m_TagString: Untagged
@@ -2795,6 +2809,18 @@ MonoBehaviour:
   MinAmountOfPlayers: 1
   Chain: {fileID: 1953608522}
   StartPrompt: {fileID: 4205414}
+--- !u!225 &1775325780
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775325777}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1853533841
 GameObject:
   m_ObjectHideFlags: 0
@@ -2805,13 +2831,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1853533843}
   - component: {fileID: 1853533842}
+  - component: {fileID: 1853533844}
   m_Layer: 5
   m_Name: Cutscenes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1853533842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2830,6 +2857,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 92a9c84541b7cda498f5652df909993f, type: 3}
   - {fileID: 21300000, guid: 2645be8c443d9e14faa47dfe41194d8b, type: 3}
   - {fileID: 21300000, guid: 7f25dfcc56511a9449945da52c2ac3c6, type: 3}
+  cutsceneParent: {fileID: 661757669}
   CutsceneImage: {fileID: 116069255}
 --- !u!224 &1853533843
 RectTransform:
@@ -2852,6 +2880,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0.0025024414, y: -0.00012207031}
   m_SizeDelta: {x: 0, y: -0.00018311}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &1853533844
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853533841}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1913676583
 GameObject:
   m_ObjectHideFlags: 0

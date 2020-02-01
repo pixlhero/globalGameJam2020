@@ -20,7 +20,7 @@ public class SkyboxRotation : MonoBehaviour
 
     public void SpeedUpShortly()
     {
-        DOTween.To(() => addedSpeed, x => addedSpeed = x, 20, 0.5f).OnComplete(() =>
+        DOTween.To(() => addedSpeed, x => addedSpeed = x, 20, 0.5f).SetEase(Ease.InSine).OnComplete(() =>
         {
             DOTween.To(() => addedSpeed, x => addedSpeed = x, 0, 3);
         });
