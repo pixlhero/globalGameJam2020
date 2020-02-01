@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class Spaceship : MonoBehaviour
 {
-    public static Spaceship instance;
+    static Spaceship instance;
+    public static Spaceship Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = FindObjectOfType<Spaceship>();
+
+            return instance;
+        }
+    }
 
     private void Start()
     {
