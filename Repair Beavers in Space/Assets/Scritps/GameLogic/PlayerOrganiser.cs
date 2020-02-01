@@ -67,5 +67,25 @@ public class PlayerOrganiser : MonoBehaviour
 
         player.GetComponent<PlayerActions>().playerNumber = controllerNumber;
         player.GetComponent<PlayerMovement>().safetyLine = safetyLine;
+
+        if (Application.isEditor)
+        {
+            var rend = player.transform.Find("Graphics").GetComponent<Renderer>();
+            switch ((ControllerMapping.BeaverType)playerNumber)
+            {
+                case ControllerMapping.BeaverType.BLUE:
+                    rend.material.color = Color.blue;
+                    break;
+                case ControllerMapping.BeaverType.GREEN:
+                    rend.material.color = Color.green;
+                    break;
+                case ControllerMapping.BeaverType.RED:
+                    rend.material.color = Color.red;
+                    break;
+                case ControllerMapping.BeaverType.YELLOW:
+                    rend.material.color = Color.yellow;
+                    break;
+            }
+        }
     }
 }
