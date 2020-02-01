@@ -31,7 +31,8 @@ public class Spawner : MonoBehaviour
 
     void SpawnObj(GameObject obj)
     {
-        Instantiate(obj, GetRandomPosition(), Quaternion.identity);
+        Quaternion rotation = Quaternion.Euler(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360));
+        Instantiate(obj, GetRandomPosition(), rotation);
     }
 
     Vector2 GetRandomPosition()
@@ -42,7 +43,7 @@ public class Spawner : MonoBehaviour
 
     Vector2 GetPositionFromAngle(float angle)
     {
-        Vector2 pos = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle) / aspectRatio) * spawnRadius;
+        Vector2 pos = (Vector2)Spaceship.Instance.transform.position + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle) / aspectRatio) * spawnRadius;
         return pos;
     }
 
