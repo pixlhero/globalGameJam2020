@@ -7,11 +7,47 @@ using UnityEngine;
 public class HullDamage : MonoBehaviour
 {
     public Transform logAnchor;
+    float logHeight = 0.5f;
     public Transform repairAnchorRight;
     public Transform repairAnchorLeft;
+
+    float repairTime;
+    public float maxRepairTime = 5;
+
     Grabbable log;
 
     int beaversRepairing = 0;
+    public bool CanJoinRepair { get { return beaversRepairing < 2; } }
+
+    private void Start()
+    {
+        logHeight = logAnchor.localPosition.y;
+    }
+
+    private void Update()
+    {
+        if (beaversRepairing == 1)
+        {
+            repairTime += Time.deltaTime;
+        }
+        else if (beaversRepairing == 2)
+        {
+            repairTime += Time.deltaTime * 2.5f;
+        }
+
+        if (repairTime >= maxRepairTime)
+        {
+            //Is repaired
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        var pos = logAnchor.localPosition;
+        pos.y = logHeight - Mathf.InverseLerp(0, maxRepairTime, repairTime) * logHeight * 2;
+
+        logAnchor.localPosition = pos;
+    }
 
     public bool HasLog()
     {

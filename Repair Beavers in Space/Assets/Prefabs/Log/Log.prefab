@@ -155,5 +155,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: 1
   variationAngle: 45
-  deathRange: 20
+  deathRange: 30
   rigi: {fileID: 7715237441246552828}

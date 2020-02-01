@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public float maxVelocity;
     public float turnSpeed = 100;
 
+    public Safetyline safetyLine;
+
     private Rigidbody2D _rigidbody;
     private DistanceJoint2D _distJoint;
 
@@ -20,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _distJoint = GetComponent<DistanceJoint2D>();
 
-        ConnectToSafetyLine(FindObjectOfType<Safetyline>());    //For Testing Purposes
+        ConnectToSafetyLine(safetyLine);    //For Testing Purposes
     }
 
     private void Update()

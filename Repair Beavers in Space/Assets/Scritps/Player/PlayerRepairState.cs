@@ -42,7 +42,7 @@ public class PlayerRepairState : MonoBehaviour
         if (hullDamage == null)
             return false;
 
-        return ((hullDamage.HasLog() && !playerHasLog) || (!hullDamage.HasLog() && playerHasLog));
+        return ((hullDamage.HasLog() && !playerHasLog) || (!hullDamage.HasLog() && playerHasLog)) && hullDamage.CanJoinRepair;
     }
     public void HullDamageIsNear(HullDamage hd)
     {
