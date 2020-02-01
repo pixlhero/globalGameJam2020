@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 1216606932}
   m_Layer: 10
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,8 +143,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4288c684b17c2c4a994ecfadc71ab71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
   playerMovement: {fileID: 4079658687753334506}
   playerGrabbing: {fileID: 2783434565764935009}
+  hullDamage: {fileID: 0}
+  currentlyRepairing: {fileID: 0}
 --- !u!50 &4079658687753334517
 Rigidbody2D:
   serializedVersion: 4

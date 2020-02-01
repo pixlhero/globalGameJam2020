@@ -12,9 +12,6 @@ public class PlayerActions : MonoBehaviour
     public PlayerMovement playerMovement;
     public PlayerGrabbing playerGrabbing;
 
-    public HullDamage hullDamage;
-    public HullDamage currentlyRepairing;
-
     // Update is called once per frame
     void Update()
     {
