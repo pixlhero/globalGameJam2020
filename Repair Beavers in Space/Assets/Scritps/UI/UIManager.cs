@@ -16,7 +16,6 @@ public class UIManager : MonoBehaviour
         START_SCREEN,
         PLAYER_SELECT,
         CUTSCENES,
-        HOWTOPLAY,
         GAME,
         LOOSE,
         WIN

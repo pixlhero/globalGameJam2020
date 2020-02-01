@@ -1,9 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CutscenesScreen : UIScreen
 {
+    public Sprite[] cutscenesInOrder;
+
+    public Image CutsceneImage;
+
+    private int currentCutsceneIndex;
+
     public override void Hide()
     {
         this.gameObject.SetActive(false);
@@ -15,9 +22,32 @@ public class CutscenesScreen : UIScreen
     }
     private void Update()
     {
-        if (Input.GetButtonDown("Start"))
+        if (TestForNextScene())
         {
-            UIManager.Singleton.SwitchToState(UIManager.UIState.HOWTOPLAY);
+            currentCutsceneIndex++;
+
+            if(currentCutsceneIndex >= cutscenesInOrder.Length)
+            {
+                UIManager.Singleton.SwitchToState(UIManager.UIState.GAME);
+            }
+            else
+            {
+                CutsceneImage.sprite = cutscenesInOrder[currentCutsceneIndex];
+            }
+
         }
+
+    }
+
+    private bool TestForNextScene()
+    {
+        for (int controllerID = 0; controllerID <= 3; controllerID++)
+        {
+            if (Input.GetButtonDown("Flap " + (controllerID + 1)))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
