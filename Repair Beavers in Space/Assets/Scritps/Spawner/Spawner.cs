@@ -8,13 +8,14 @@ public class Spawner : MonoBehaviour
     public float spawnRadius = 10;
     public float aspectRatio = 1;
 
-    #region Test
+    public Transform debrisAnchor;
+
+    [Header("Prefabs")]
     public GameObject asteroidPrefab;
     public GameObject logPrefab;
 
     float time;
     public float testDeltaTime = 1;
-    #endregion
 
     void Start()
     {
@@ -36,7 +37,7 @@ public class Spawner : MonoBehaviour
     void SpawnObj(GameObject obj)
     {
         Quaternion rotation = Quaternion.Euler(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360));
-        Instantiate(obj, GetRandomPosition(), rotation);
+        Instantiate(obj, GetRandomPosition(), rotation, debrisAnchor);
     }
 
     Vector2 GetRandomPosition()
