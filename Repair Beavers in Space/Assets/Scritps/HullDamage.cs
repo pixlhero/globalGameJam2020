@@ -38,6 +38,7 @@ public class HullDamage : MonoBehaviour
             FixDamage();
             return;
         }
+
         if (beaversRepairing == 1)
         {
             repairTime += Time.deltaTime;
