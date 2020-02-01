@@ -8,13 +8,14 @@ public class Safetyline : MonoBehaviour
     public GameObject chainLinkPrefab;
     public float chainLinkSize = 0.15f;
 
-    public float length = 3;
+    static float[] lengths = new float[] { 10, 8, 6 };
+    float Length { get { return lengths[PlayerOrganiser.instance.PlayerCount - 1]; } }
 
     public Rigidbody2D chainEnd;
 
     void Awake()
     {
-        int chainLinkCount = Mathf.RoundToInt(length / chainLinkSize);
+        int chainLinkCount = Mathf.RoundToInt(Length / chainLinkSize);
 
         GameObject firstLink = Instantiate(chainLinkPrefab, transform.position, Quaternion.identity, transform);
         DistanceJoint2D joint = firstLink.GetComponent<DistanceJoint2D>();

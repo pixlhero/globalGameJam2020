@@ -58,7 +58,7 @@ public class PlayerOrganiser : MonoBehaviour
 
         var dir = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
 
-        var player = Instantiate(playerPrefab, Spaceship.Position + dir * playerRadius, Quaternion.Euler(0,0, angle));
+        var player = Instantiate(playerPrefab, Spaceship.Position + dir * playerRadius, Quaternion.Euler(0,0, angle - 90));
         var safetyLineObj = Instantiate(safetyLinePrefab, Spaceship.Position + dir * safetyLineRadius, Quaternion.Euler(0,0, angle));
 
         player.name = "Player " + playerNumber;
