@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerSelectScreen : UIScreen{
 
-    private ControllerMapping _controllerMapping;
-
     public override void Hide()
     {
         this.gameObject.SetActive(false);
@@ -36,21 +34,12 @@ public class PlayerSelectScreen : UIScreen{
 
     private void TryRegisterPlayer(int controllerID)
     {
-        if(_controllerMapping == null)
-        {
-            _controllerMapping = FindObjectOfType<ControllerMapping>();
-        }
-        if(_controllerMapping == null)
-        {
-            Debug.LogError("ControllerMapping Object not found");
-        }
-
-        if (_controllerMapping.HasMapping(controllerID))
+        if (ControllerMapping.HasMapping(controllerID))
             return;
 
-        ControllerMapping.BeaverType nextFreeType = _controllerMapping.GetNextAvailableType();
-        int currentPlayers = _controllerMapping.NumberOfRegisteredPlayers;
+        ControllerMapping.BeaverType nextFreeType = ControllerMapping.GetNextAvailableType();
+        int currentPlayers = ControllerMapping.NumberOfRegisteredPlayers;
 
-        _controllerMapping.SetMapping(controllerID, nextFreeType);
+        ControllerMapping.SetMapping(controllerID, nextFreeType);
     }
 }

@@ -36,7 +36,11 @@ public class PlayerOrganiser : MonoBehaviour
         //Spawn n Players and give them the correct input mapping
         for (int i = 0; i < PlayerCount; i++)
         {
-            SpawnPlayer(i, i);
+            int controllerID;
+            if (ControllerMapping.TryGetID((ControllerMapping.BeaverType)i, out controllerID))
+            {
+                SpawnPlayer(i, i);
+            }
         }
     }
 
