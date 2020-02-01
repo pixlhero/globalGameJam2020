@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
+    public static GameManager instance;
     private bool _hasStartedFromThisScene; // used for debugging. e.g. skipping the UI introduction
 
     private void Start()
@@ -23,6 +23,16 @@ public class GameManager : MonoBehaviour
     }
 
     public void StartGame()
+    {
+        //TODO
+    }
+
+    public void SetWinState()
+    {
+        //TODO
+    }
+
+    public void SetLoseState()
     {
         //TODO
     }
