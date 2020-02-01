@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSelectScreen : UIScreen{
+    public int MinAmountOfPlayers = 1;
 
+    public SelectChain Chain;
+
+    public GameObject StartPrompt;
     public override void Hide()
     {
         this.gameObject.SetActive(false);
@@ -11,22 +15,21 @@ public class PlayerSelectScreen : UIScreen{
 
     public override void Show()
     {
+        StartPrompt.SetActive(false);
         this.gameObject.SetActive(true);
     }
+
     private void Update()
     {
         for(int controllerID = 0; controllerID <= 3; controllerID++)
         {
-            if (Input.GetButtonDown("Flap " + controllerID))
+            if (Input.GetButtonDown("Flap " + (controllerID + 1)))
             {
                 TryRegisterPlayer(controllerID);
             }
         }
 
-        
-
-
-        if (Input.GetButtonDown("Start"))
+        if (Input.GetButtonDown("Start") && ControllerMapping.NumberOfRegisteredPlayers >= MinAmountOfPlayers)
         {
             UIManager.Singleton.SwitchToState(UIManager.UIState.CUTSCENES);
         }
@@ -41,5 +44,17 @@ public class PlayerSelectScreen : UIScreen{
         int currentPlayers = ControllerMapping.NumberOfRegisteredPlayers;
 
         ControllerMapping.SetMapping(controllerID, nextFreeType);
+
+        Chain.AddChain();
+
+        if (ControllerMapping.NumberOfRegisteredPlayers >= MinAmountOfPlayers)
+        {
+            EnableStart();
+        }
+    }
+
+    private void EnableStart()
+    {
+        StartPrompt.SetActive(true);
     }
 }
