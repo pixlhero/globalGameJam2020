@@ -5,18 +5,19 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class SpaceObject : MonoBehaviour
 {
+    public Transform spaceShip;
     public float velocity;
     public float variationAngle;
-    public float deathRange = 20;            //if the obj is further away from the spaceship than that it gets despawned
+    public float deathRange;            //if the obj is further away from the spaceship than that it gets despawned
 
-    [SerializeField, HideInInspector] protected Rigidbody2D rigi;
+    [SerializeField, HideInInspector] Rigidbody2D rigi;
 
     Vector2 ShipCenter
     {
         get
         {
-            if (Spaceship.Instance != null)
-                return Spaceship.Instance.transform.position;
+            if (Spaceship.instance != null)
+                return Spaceship.instance.transform.position;
             else
                 return Vector2.zero;
         }
@@ -24,14 +25,14 @@ public class SpaceObject : MonoBehaviour
 
     Vector2 Position { get { return transform.position; } }
 
-    protected virtual void Start()
+    private void Start()
     {
         rigi = GetComponent<Rigidbody2D>();
 
         rigi.velocity = GetStartDirection() * velocity;
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         Vector2 distance = ShipCenter - Position;
 

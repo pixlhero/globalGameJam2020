@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3140515301790403639}
   - component: {fileID: 3140515301790403638}
   - component: {fileID: 3140515301790403633}
+  - component: {fileID: 3140515301790403637}
   - component: {fileID: 7424144350454804042}
-  - component: {fileID: 959235885395262899}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3140515301790403636}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &3140515301790403638
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -101,6 +101,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3140515301790403637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3140515301790403636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57adb0c1805ee5e409906f1337c08655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spaceShip: {fileID: 0}
+  velocity: 5
+  variationAngle: 0
+  deathRange: 20
+  rigi: {fileID: 3140515301790403633}
 --- !u!58 &7424144350454804042
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -117,19 +134,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &959235885395262899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3140515301790403636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29e1684941d1d264fb56cdb109b40198, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocity: 5
-  variationAngle: 20
-  deathRange: 20
-  rigi: {fileID: 3140515301790403633}
