@@ -37,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
         if (direction.magnitude < 0.1)
             return;
 
+
+
         // weird fix. don't judge me. :'(
         direction = new Vector2(direction.y, -direction.x);
 
