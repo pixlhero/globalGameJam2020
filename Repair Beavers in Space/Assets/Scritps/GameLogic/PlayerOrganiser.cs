@@ -32,6 +32,7 @@ public class PlayerOrganiser : MonoBehaviour
     private void Start()
     {
         //Grab Player Count From PlayerMapping
+        PlayerCount = ControllerMapping.NumberOfRegisteredPlayers;
 
         //Spawn n Players and give them the correct input mapping
         for (int i = 0; i < PlayerCount; i++)
