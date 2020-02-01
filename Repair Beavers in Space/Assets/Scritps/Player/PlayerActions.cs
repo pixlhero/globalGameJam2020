@@ -22,7 +22,7 @@ public class PlayerActions : MonoBehaviour
             if (Input.GetButtonDown("Grab"))
             {
                 if (playerRepairState.CanStartRepairing(PlayerHasLog()))
-                    playerRepairState.StartRepairing();
+                    playerRepairState.StartRepairing(playerGrabbing.GiveLog());
                 else
                     playerGrabbing.ToggleGrabRelease();
             }

@@ -41,5 +41,11 @@ public class Grabbable : MonoBehaviour
     {
         _rigidbody.isKinematic = !on;
         _rigidbody.simulated = on;
+
+        if (!on)
+        {
+            _rigidbody.velocity = Vector2.zero;
+            _rigidbody.angularVelocity = 0;
+        }
     }
 }

@@ -9,11 +9,14 @@ public class PlayerRepairState : MonoBehaviour
     public HullDamage hullDamage;
     public HullDamage currentlyRepairing;
 
-    public void StartRepairing()
+    public void StartRepairing(Grabbable log)
     {
         currentlyRepairing = hullDamage;
 
         hullDamage = null;
+
+        if (!currentlyRepairing.HasLog() && log != null)
+            currentlyRepairing.GiveLog(log);
 
         TogglePhysics(false);
         currentlyRepairing.JoinRepair(transform);
@@ -54,7 +57,11 @@ public class PlayerRepairState : MonoBehaviour
     void TogglePhysics(bool on)
     {
         _rigidbody.isKinematic = !on;
-        _rigidbody.simulated = on;
 
+        if (!on)
+        {
+            _rigidbody.velocity = Vector2.zero;
+            _rigidbody.angularVelocity = 0;
+        }
     }
 }

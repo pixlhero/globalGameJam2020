@@ -7,6 +7,8 @@ using UnityEngine;
 public class HullDamage : MonoBehaviour
 {
     public Transform logAnchor;
+    public Transform repairAnchorRight;
+    public Transform repairAnchorLeft;
     Grabbable log;
 
     int beaversRepairing = 0;
@@ -16,9 +18,20 @@ public class HullDamage : MonoBehaviour
         return log != null;
     }
 
-    internal void JoinRepair(Transform playerTranform)
+    internal void JoinRepair(Transform playerTransform)
     {
         beaversRepairing++;
+
+        //Choose which repair anchor is closer
+        var playerPos = playerTransform.position;
+
+        if ((playerPos - repairAnchorRight.position).sqrMagnitude < (playerPos - repairAnchorLeft.position).sqrMagnitude)
+            playerTransform.parent = repairAnchorRight;
+        else
+            playerTransform.parent = repairAnchorLeft;
+
+        playerTransform.localPosition = Vector3.zero;
+        playerTransform.localRotation = Quaternion.identity;
     }
     internal void LeaveRepair(Transform playerTransform)
     {

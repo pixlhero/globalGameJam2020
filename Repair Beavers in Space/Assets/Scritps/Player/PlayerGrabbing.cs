@@ -43,18 +43,21 @@ public class PlayerGrabbing : MonoBehaviour
     private void ExecuteGrab(Grabbable grabbable)
     {
         grabbable.TogglePhysics(false);
+
         grabbable.transform.SetParent(grabAnchor);
         grabbable.transform.localPosition = Vector3.zero;
         grabbable.transform.localRotation = Quaternion.identity;
+
 
         heldObject = grabbable;
     }
 
     private void ExecuteRelease()
     {
+        heldObject.TogglePhysics(true);
+
         heldObject.transform.position = releaseAnchor.position;
         heldObject.transform.parent = null;
-        heldObject.TogglePhysics(true);
 
         heldObject = null;
     }
