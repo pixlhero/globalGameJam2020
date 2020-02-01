@@ -6,6 +6,11 @@ using UnityEngine;
 [RequireComponent(typeof(CircleCollider2D))]
 public class HullDamage : MonoBehaviour
 {
+    public static int CURRENT_LEAKS;
+
+    public delegate void DamageEvent();
+    public DamageEvent OnRepaired;
+
     public Transform logAnchor;
     float logHeight = 0.5f;
     public Transform repairAnchorRight;
@@ -22,10 +27,17 @@ public class HullDamage : MonoBehaviour
     private void Start()
     {
         logHeight = logAnchor.localPosition.y;
+        CURRENT_LEAKS++;
     }
 
     private void Update()
     {
+
+        if (repairTime >= maxRepairTime)
+        {
+            FixDamage();
+            return;
+        }
         if (beaversRepairing == 1)
         {
             repairTime += Time.deltaTime;
@@ -33,11 +45,6 @@ public class HullDamage : MonoBehaviour
         else if (beaversRepairing == 2)
         {
             repairTime += Time.deltaTime * 2.5f;
-        }
-
-        if (repairTime >= maxRepairTime)
-        {
-            //Is repaired
         }
     }
 
@@ -81,6 +88,14 @@ public class HullDamage : MonoBehaviour
         log.transform.parent = logAnchor;
         log.transform.localPosition = Vector3.zero;
         log.transform.localRotation = Quaternion.identity;
+    }
+
+    void FixDamage()
+    {
+        OnRepaired?.Invoke();
+        Destroy(gameObject);
+
+        CURRENT_LEAKS--;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

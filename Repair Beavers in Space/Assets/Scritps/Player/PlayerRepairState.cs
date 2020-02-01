@@ -19,12 +19,16 @@ public class PlayerRepairState : MonoBehaviour
             currentlyRepairing.GiveLog(log);
 
         TogglePhysics(false);
+        currentlyRepairing.OnRepaired += StopRepairing;
         currentlyRepairing.JoinRepair(transform);
     }
 
-    private void StopRepairing()
+    public void StopRepairing()
     {
         TogglePhysics(true);
+
+        currentlyRepairing.LeaveRepair(transform);
+        currentlyRepairing.OnRepaired -= StopRepairing;
         currentlyRepairing = null;
     }
 

@@ -9,6 +9,9 @@ public class Spaceship : MonoBehaviour
     public GameObject hullDamagePrefab;
     public float size = 5;
 
+    public int maxHealth = 200;
+    public float health;
+
     public List<GameObject> damages = new List<GameObject>();
 
     public static Spaceship Instance
@@ -22,9 +25,19 @@ public class Spaceship : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        health = maxHealth;
+    }
+
     private void Start()
     {
         instance = this;
+    }
+
+    private void Update()
+    {
+        health -= HullDamage.CURRENT_LEAKS * Time.deltaTime;
     }
 
     public void CreateHullDamage(Vector2 position)

@@ -41,10 +41,12 @@ public class PlayerActions : MonoBehaviour
             direction.y = Input.GetAxis(Vertical);
 
             playerMovement.AdjustDirection(direction);
-
+        }
+        else
+        {
             if (Input.GetButtonDown(Grab))
             {
-                //Stop Repairing
+                playerRepairState.StopRepairing();
             }
         }
     }
