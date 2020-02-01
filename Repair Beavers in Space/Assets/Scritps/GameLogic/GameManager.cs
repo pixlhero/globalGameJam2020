@@ -7,8 +7,14 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public enum State { intro, gameplay, win, lose }
+    public static State CurrentState { get; private set; } = State.intro;
+
     public static GameManager instance;
     private bool _hasStartedFromThisScene; // used for debugging. e.g. skipping the UI introduction
+
+    [Header("Transitions")]
+    public int startTransitionTime = 5;
 
     private void Start()
     {
@@ -20,17 +26,20 @@ public class GameManager : MonoBehaviour
         instance = this;
 
         Camera.main.transform.DORotate(Vector3.zero, 2);
-           
+
+        StartCoroutine("StartDelay");
     }
 
-    public void SetNumberOfPlayers(int number)
+    IEnumerator StartDelay()
     {
-        // TODO
+        yield return new WaitForSeconds(startTransitionTime);
+        StartGame();
     }
 
     public void StartGame()
     {
         //TODO
+        CurrentState = State.gameplay;
     }
 
     public void SetWinState()

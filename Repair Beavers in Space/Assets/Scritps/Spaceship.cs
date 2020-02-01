@@ -44,17 +44,20 @@ public class Spaceship : MonoBehaviour
 
     private void Update()
     {
-        time += Time.deltaTime;
-        health -= HullDamage.CURRENT_LEAKS * Time.deltaTime;
-
-        if (time <= 0)
+        if (GameManager.CurrentState == GameManager.State.gameplay)
         {
-            GameManager.instance.SetWinState();
-        }
+            time += Time.deltaTime;
+            health -= HullDamage.CURRENT_LEAKS * Time.deltaTime;
 
-        if (health <= 0)
-        {
-            GameManager.instance.SetLoseState();
+            if (time <= 0)
+            {
+                GameManager.instance.SetWinState();
+            }
+
+            if (health <= 0)
+            {
+                GameManager.instance.SetLoseState();
+            }
         }
     }
 
