@@ -27,8 +27,11 @@ public class Spaceship : MonoBehaviour
     public GameObject hullDamagePrefab;
     public float size = 5;
 
+    [Header("Win Conditions")]
     public int maxHealth = 200;
     public float health;
+    public float time;
+    public float timeOfArrival = 600;
 
     public List<GameObject> damages = new List<GameObject>();
 
@@ -36,11 +39,18 @@ public class Spaceship : MonoBehaviour
     {
         instance = this;
         health = maxHealth;
+        time = timeOfArrival;
     }
 
     private void Update()
     {
+        time += Time.deltaTime;
         health -= HullDamage.CURRENT_LEAKS * Time.deltaTime;
+
+        if (time <= 0)
+        {
+            GameManager.instance.SetWinState();
+        }
 
         if (health <= 0)
         {
