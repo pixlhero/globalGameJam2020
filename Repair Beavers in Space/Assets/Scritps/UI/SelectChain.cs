@@ -8,6 +8,14 @@ public class SelectChain : MonoBehaviour
 
     private int nextActiveChainID = 0;
 
+    private void Awake()
+    {
+        foreach(GameObject chainEl in chainElementsInOrder)
+        {
+            chainEl.SetActive(false);
+        }
+    }
+
     public void AddChain()
     {
         chainElementsInOrder[nextActiveChainID].SetActive(true);
