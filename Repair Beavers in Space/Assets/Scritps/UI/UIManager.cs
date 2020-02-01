@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour
     private UIState _currentState;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if(UIManager.Singleton != null)
         {

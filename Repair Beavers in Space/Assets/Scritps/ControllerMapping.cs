@@ -12,13 +12,22 @@ public class ControllerMapping : MonoBehaviour
         YELLOW
     }
 
+    [HideInInspector]
+    public int NumberOfRegisteredPlayers = 0;
+
     private Dictionary<int, BeaverType> mappingDict = new Dictionary<int, BeaverType>();
     private Dictionary<BeaverType, int> reverseDict = new Dictionary<BeaverType, int>();
 
     public void SetMapping(int controllerID, BeaverType beaverType)
     {
+        NumberOfRegisteredPlayers++;
         mappingDict.Add(controllerID, beaverType);
         reverseDict.Add(beaverType, controllerID);
+    }
+
+    public BeaverType GetNextAvailableType()
+    {
+        return (BeaverType)NumberOfRegisteredPlayers;
     }
 
     public bool HasMapping(int controllerID)
