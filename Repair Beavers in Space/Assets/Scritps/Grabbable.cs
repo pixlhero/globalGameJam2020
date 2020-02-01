@@ -40,6 +40,7 @@ public class Grabbable : MonoBehaviour
     public void TogglePhysics(bool on)
     {
         _rigidbody.isKinematic = !on;
+        _rigidbody.simulated = on;
         collider.enabled = on;
     }
 }

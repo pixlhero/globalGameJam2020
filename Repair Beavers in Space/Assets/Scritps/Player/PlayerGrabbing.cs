@@ -72,4 +72,17 @@ public class PlayerGrabbing : MonoBehaviour
             this.newestGrabbable = null;
         }
     }
+
+    public bool HoldsLog()
+    {
+        return heldObject != null;
+    }
+
+    public Grabbable GiveLog()
+    {
+        var log = heldObject;
+        heldObject = null;
+
+        return log;
+    }
 }
