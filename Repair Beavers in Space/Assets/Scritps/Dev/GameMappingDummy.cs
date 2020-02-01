@@ -10,9 +10,12 @@ public class GameMappingDummy : MonoBehaviour
     {
         if (Application.isEditor)
         {
-            for (int i = 0; i < numberOfPlayers; i++)
+            if (!ControllerMapping.HasMapping(0))
             {
-                ControllerMapping.SetMapping(i, (ControllerMapping.BeaverType)i);
+                for (int i = 0; i < numberOfPlayers; i++)
+                {
+                    ControllerMapping.SetMapping(i, (ControllerMapping.BeaverType)i);
+                }
             }
         }
 
