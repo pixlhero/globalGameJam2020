@@ -39,6 +39,10 @@ public class PlayerOrganiser : MonoBehaviour
             int controllerID;
             if (ControllerMapping.TryGetID((ControllerMapping.BeaverType)i, out controllerID))
             {
+                SpawnPlayer(i, controllerID);
+            }
+            else if (Application.isEditor)
+            {
                 SpawnPlayer(i, i);
             }
         }
