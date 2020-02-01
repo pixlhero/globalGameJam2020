@@ -16,16 +16,20 @@ public class GameManager : MonoBehaviour
     [Header("Transitions")]
     public int startTransitionTime = 5;
 
-    private void Start()
+    private void Awake()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         { // to make starting from this scene possible
-            SceneManager.LoadScene("UIScene", LoadSceneMode.Additive);
+            SceneManager.LoadScene("MainScene", LoadSceneMode.Additive);
             _hasStartedFromThisScene = true;
         }
+    }
+
+    private void Start()
+    {
         instance = this;
 
-        Camera.main.transform.DORotate(Vector3.zero, 2);
+        Camera.main.transform.DORotate(Vector3.zero, startTransitionTime);
 
         StartCoroutine("StartDelay");
     }

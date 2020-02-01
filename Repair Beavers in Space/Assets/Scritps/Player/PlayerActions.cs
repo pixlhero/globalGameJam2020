@@ -11,6 +11,10 @@ public class PlayerActions : MonoBehaviour
     public PlayerGrabbing playerGrabbing;
     public PlayerRepairState playerRepairState;
 
+    [SerializeField] bool paralyzed;
+    float paralyzeTime;
+    public float maxParalyzeTime = 5;
+
     string Flap { get { return "Flap" + InputNumber; } }
     string Grab { get { return "Grab" + InputNumber; } }
     string Horizontal { get { return "Horizontal" + InputNumber; } }
@@ -21,32 +25,45 @@ public class PlayerActions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!playerRepairState.IsRepairing())
+        if (GameManager.CurrentState == GameManager.State.gameplay)
         {
-            if (Input.GetButtonDown(Flap))
+            if (!paralyzed)
             {
-                playerMovement.Flap();
-            }
+                if (!playerRepairState.IsRepairing())
+                {
+                    if (Input.GetButtonDown(Flap))
+                    {
+                        playerMovement.Flap();
+                    }
 
-            if (Input.GetButtonDown(Grab))
-            {
-                if (playerRepairState.CanStartRepairing(PlayerHasLog()))
-                    playerRepairState.StartRepairing(playerGrabbing.GiveLog());
+                    if (Input.GetButtonDown(Grab))
+                    {
+                        if (playerRepairState.CanStartRepairing(PlayerHasLog()))
+                            playerRepairState.StartRepairing(playerGrabbing.GiveLog());
+                        else
+                            playerGrabbing.ToggleGrabRelease();
+                    }
+
+                    Vector2 direction = Vector2.one;
+                    direction.x = Input.GetAxis(Horizontal);
+                    direction.y = Input.GetAxis(Vertical);
+
+                    playerMovement.AdjustDirection(direction);
+                }
                 else
-                    playerGrabbing.ToggleGrabRelease();
+                {
+                    if (Input.GetButtonDown(Grab))
+                    {
+                        playerRepairState.StopRepairing();
+                    }
+                }
             }
-
-            Vector2 direction = Vector2.one;
-            direction.x = Input.GetAxis(Horizontal);
-            direction.y = Input.GetAxis(Vertical);
-
-            playerMovement.AdjustDirection(direction);
-        }
-        else
-        {
-            if (Input.GetButtonDown(Grab))
+            else
             {
-                playerRepairState.StopRepairing();
+                paralyzeTime -= Time.deltaTime;
+
+                if (paralyzeTime <= 0)
+                    paralyzed = false;
             }
         }
     }
@@ -54,5 +71,22 @@ public class PlayerActions : MonoBehaviour
     bool PlayerHasLog()
     {
         return playerGrabbing.HoldsLog();
+    }
+
+    bool CanBeParalyzed()
+    {
+        return !playerRepairState.IsRepairing();
+    }
+
+    public void Paralyze()
+    {
+        if (!paralyzed)
+        {
+            paralyzed = true;
+            paralyzeTime = maxParalyzeTime;
+
+            if (PlayerHasLog())
+                playerGrabbing.ToggleGrabRelease();
+        }
     }
 }

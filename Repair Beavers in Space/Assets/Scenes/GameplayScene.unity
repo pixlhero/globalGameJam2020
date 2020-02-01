@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d88d76889f9f7548a5d408ad036cffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRadius: 20
+  spawnRadius: 25
   aspectRatio: 1.7
   debrisAnchor: {fileID: 1549572993}
   asteroidPrefab: {fileID: 3140515301790403636, guid: bf4ea0fcf6ffb3a41b27189107f32bd5,
@@ -316,6 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b52d2a8b111015428eb89d6d0586fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startTransitionTime: 5
 --- !u!114 &426840608 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 946757324284517806, guid: eac87749295c5cf4aa4cddcd402090fd,

@@ -39,5 +39,9 @@ public class Asteroid : SpaceObject
         {
             Explode();
         }
+        else if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerActions>().Paralyze();
+        }
     }
 }

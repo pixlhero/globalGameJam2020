@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57adb0c1805ee5e409906f1337c08655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 1
-  variationAngle: 45
+  velocity: 2
+  variationAngle: 30
   deathRange: 30
   rigi: {fileID: 7715237441246552828}
