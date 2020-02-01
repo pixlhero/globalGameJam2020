@@ -14,7 +14,6 @@ public class PlayerActions : MonoBehaviour
     {
         if (!playerRepairState.IsRepairing())
         {
-
             if (Input.GetButtonDown("Flap"))
             {
                 playerMovement.Flap();
