@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5835433, g: 0.43140504, b: 0.83783865, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -936,14 +936,8 @@ PrefabInstance:
     - target: {fileID: 4328904786926775176, guid: e25ae13daa1e34f43a243be4c84cf388,
         type: 3}
       propertyPath: m_Name
-      value: Main Camera (1)
+      value: Main Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 4328904786926775176, guid: e25ae13daa1e34f43a243be4c84cf388,
-        type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000,
-        type: 0}
     - target: {fileID: 4328904786926775173, guid: e25ae13daa1e34f43a243be4c84cf388,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1001,34 +995,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e25ae13daa1e34f43a243be4c84cf388, type: 3}
---- !u!1 &1758898437 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4328904786926775176, guid: e25ae13daa1e34f43a243be4c84cf388,
-    type: 3}
-  m_PrefabInstance: {fileID: 1758898436}
-  m_PrefabAsset: {fileID: 0}
---- !u!45 &1758898438
-Skybox:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1758898437}
-  m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: eb34692f34091f24d91e26e5e199dd72, type: 2}
---- !u!114 &1758898439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1758898437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6806ded97eb54164da7d813cde315643, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RotationSpeed: 10
 --- !u!4 &1758898444 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4328904786926775173, guid: e25ae13daa1e34f43a243be4c84cf388,
