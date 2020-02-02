@@ -9,6 +9,7 @@ public class PlayerOrganiser : MonoBehaviour
     [Header("Prefabs")]
     public GameObject playerPrefab;
     public GameObject safetyLinePrefab;
+    public GameObject[] playerModels = new GameObject[4];
 
     [Header("Settings")]
     [SerializeField] int playerCount;
@@ -59,33 +60,27 @@ public class PlayerOrganiser : MonoBehaviour
         var dir = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
 
         var player = Instantiate(playerPrefab, Spaceship.Position + dir * playerRadius, Quaternion.Euler(0,0, angle - 90));
+
+        var playerActions = player.GetComponent<PlayerActions>();
+        playerActions.playerNumber = controllerNumber;
+
+        //Player Model
+        if (playerNumber != 0)
+        {
+            Destroy(player.transform.Find("model 1").gameObject);
+            var model = Instantiate(playerModels[controllerNumber], Spaceship.Position + dir * playerRadius, Quaternion.identity, player.transform);
+
+            model.transform.localRotation = Quaternion.Euler(0, -90, 0);
+
+            playerActions.playerAnimator.anim = model.GetComponent<Animator>();
+        }
+
         var safetyLineObj = Instantiate(safetyLinePrefab, Spaceship.Position + dir * safetyLineRadius, Quaternion.Euler(0,0, angle));
 
         player.name = "Player " + playerNumber;
 
         var safetyLine = safetyLineObj.GetComponent<Safetyline>();
 
-        player.GetComponent<PlayerActions>().playerNumber = controllerNumber;
         player.GetComponent<PlayerMovement>().safetyLine = safetyLine;
-
-        if (Application.isEditor)
-        {
-            var rend = player.transform.Find("Graphics").GetComponent<Renderer>();
-            switch ((ControllerMapping.BeaverType)playerNumber)
-            {
-                case ControllerMapping.BeaverType.BLUE:
-                    rend.material.color = Color.blue;
-                    break;
-                case ControllerMapping.BeaverType.GREEN:
-                    rend.material.color = Color.green;
-                    break;
-                case ControllerMapping.BeaverType.RED:
-                    rend.material.color = Color.red;
-                    break;
-                case ControllerMapping.BeaverType.YELLOW:
-                    rend.material.color = Color.yellow;
-                    break;
-            }
-        }
     }
 }
