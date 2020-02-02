@@ -12,6 +12,8 @@ public class PlayerGrabbing : MonoBehaviour
     private Grabbable newestGrabbable;
     private Grabbable heldObject;
 
+    float grabTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,10 @@ public class PlayerGrabbing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (heldObject != null)
+            grabTime += Time.deltaTime;
+        else
+            grabTime = 0;
     }
 
     public void ToggleGrabRelease()
@@ -54,12 +59,15 @@ public class PlayerGrabbing : MonoBehaviour
 
     private void ExecuteRelease()
     {
-        heldObject.TogglePhysics(true);
+        if (grabTime >= 1)
+        {
+            heldObject.TogglePhysics(true);
 
-        heldObject.transform.position = releaseAnchor.position;
-        heldObject.transform.parent = null;
+            heldObject.transform.position = releaseAnchor.position;
+            heldObject.transform.parent = null;
 
-        heldObject = null;
+            heldObject = null;
+        }
     }
 
     // these 2 methods should be reworked later

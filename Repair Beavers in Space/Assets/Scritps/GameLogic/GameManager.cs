@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
                     Spawner.SpawnAsteroid();
                 }
 
-                if (Log.LOG_COUNT < HullDamage.CURRENT_LEAKS)
+                if (Log.LOG_COUNT < HullDamage.CURRENT_LEAKS * 2)
                     Spawner.SpawnWood();
             }
         }

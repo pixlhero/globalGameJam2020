@@ -61,23 +61,21 @@ public class PlayerOrganiser : MonoBehaviour
 
         var dir = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
 
-        var player = Instantiate(playerPrefab, Spaceship.Position + dir * playerRadius, Quaternion.Euler(0,0, angle - 90), playerAnchor);
+        var player = Instantiate(playerPrefab, Spaceship.Position + dir * playerRadius, Quaternion.Euler(0, 0, angle - 90), playerAnchor);
 
         var playerActions = player.GetComponent<PlayerActions>();
         playerActions.playerNumber = controllerNumber;
 
         //Player Model
-        if (playerNumber != 0)
-        {
-            Destroy(player.transform.Find("model 1").gameObject);
-            var model = Instantiate(playerModels[controllerNumber], Spaceship.Position + dir * playerRadius, Quaternion.identity, player.transform);
+        Destroy(player.transform.Find("model 1").gameObject);
+        var model = Instantiate(playerModels[controllerNumber], Spaceship.Position + dir * playerRadius, Quaternion.identity, player.transform);
 
-            model.transform.localRotation = Quaternion.Euler(0, -90, 0);
+        model.transform.localRotation = Quaternion.Euler(0, -90, 0);
 
-            playerActions.playerAnimator.anim = model.GetComponent<Animator>();
-        }
+        playerActions.playerAnimator.anim = model.GetComponent<Animator>();
 
-        var safetyLineObj = Instantiate(safetyLinePrefab, Spaceship.Position + dir * safetyLineRadius, Quaternion.Euler(0,0, angle - 90), playerAnchor);
+        //SafetyLine
+        var safetyLineObj = Instantiate(safetyLinePrefab, Spaceship.Position + dir * safetyLineRadius, Quaternion.Euler(0, 0, angle - 90), playerAnchor);
 
         player.name = "Player " + playerNumber;
 
