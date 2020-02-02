@@ -75,7 +75,7 @@ public class PlayerOrganiser : MonoBehaviour
             playerActions.playerAnimator.anim = model.GetComponent<Animator>();
         }
 
-        var safetyLineObj = Instantiate(safetyLinePrefab, Spaceship.Position + dir * safetyLineRadius, Quaternion.Euler(0,0, angle));
+        var safetyLineObj = Instantiate(safetyLinePrefab, Spaceship.Position + dir * safetyLineRadius, Quaternion.Euler(0,0, angle - 90));
 
         player.name = "Player " + playerNumber;
 
