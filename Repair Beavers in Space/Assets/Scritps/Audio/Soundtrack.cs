@@ -7,8 +7,6 @@ using UnityEngine;
 public class Soundtrack : MonoBehaviour
 {
 
-    public float volume = 0.5f;
-
     public AudioClip gameSound;
     public AudioClip menuSound;
 
@@ -17,7 +15,7 @@ public class Soundtrack : MonoBehaviour
     {
         AudioSource source = GetComponent<AudioSource>();
         source.Play();
-        source.DOFade(volume, 4);
+        source.DOFade(0.3f, 4);
     }
 
     // Update is called once per frame
@@ -48,7 +46,7 @@ public class Soundtrack : MonoBehaviour
             source.Stop();
             source.clip = menuSound;
             source.Play();
-            source.DOFade(0.5f, 1);
+            source.DOFade(0.3f, 1);
         });
     }
 }
