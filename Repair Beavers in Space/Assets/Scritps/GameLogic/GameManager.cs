@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
+        CurrentState = State.intro;
         if (SceneManager.GetActiveScene().buildIndex == 2)
         { // to make starting from this scene possible
             SceneManager.LoadScene("MainScene", LoadSceneMode.Additive);
@@ -32,9 +34,6 @@ public class GameManager : MonoBehaviour
     {
         Spawner.SpawnWood();
         Spawner.SpawnWood();
-
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("GameplayScene"));
-        instance = this;
 
         Camera.main.transform.DORotate(Vector3.zero, startTransitionTime);
 
@@ -73,11 +72,13 @@ public class GameManager : MonoBehaviour
 
     public void SetWinState()
     {
-        //TODO
+        CurrentState = State.win;
+        UIManager.Singleton.SwitchToState(UIManager.UIState.LOOSE);
     }
 
     public void SetLoseState()
     {
-        //TODO
+        CurrentState = State.lose;
+        UIManager.Singleton.SwitchToState(UIManager.UIState.LOOSE);
     }
 }
