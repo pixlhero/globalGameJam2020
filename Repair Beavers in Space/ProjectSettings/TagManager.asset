@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Spaceship
   - GrabZone
+  - Asteroid
   layers:
   - Default
   - TransparentFX

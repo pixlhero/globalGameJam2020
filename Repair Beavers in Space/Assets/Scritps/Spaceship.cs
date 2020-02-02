@@ -47,7 +47,7 @@ public class Spaceship : MonoBehaviour
     {
         if (GameManager.CurrentState == GameManager.State.gameplay)
         {
-            time += Time.deltaTime;
+            time -= Time.deltaTime;
             health -= HullDamage.CURRENT_LEAKS * Time.deltaTime;
 
             if (time <= 0)

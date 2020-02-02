@@ -12,6 +12,9 @@ public class PlayerActions : MonoBehaviour
     public PlayerRepairState playerRepairState;
     public PlayerAnimator playerAnimator;
 
+    public AudioSource source;
+    public AudioClip[] hitClips;
+
     [SerializeField] bool paralyzed;
     float paralyzeTime;
     public float maxParalyzeTime = 5;
@@ -40,8 +43,14 @@ public class PlayerActions : MonoBehaviour
 
                     if (Input.GetButtonDown(Grab))
                     {
-                        if (playerRepairState.CanStartRepairing(PlayerHasLog()))
+                        bool dropLog;
+                        if (playerRepairState.CanStartRepairing(PlayerHasLog(), out dropLog))
+                        {
+                            if (dropLog)
+                                playerGrabbing.ToggleGrabRelease(true);
+
                             playerRepairState.StartRepairing(playerGrabbing.GiveLog());
+                        }
                         else
                             playerGrabbing.ToggleGrabRelease();
                     }
@@ -51,13 +60,6 @@ public class PlayerActions : MonoBehaviour
                     direction.y = Input.GetAxis(Vertical);
 
                     playerMovement.AdjustDirection(direction);
-                }
-                else
-                {
-                    if (Input.GetButtonDown(Grab))
-                    {
-                        playerRepairState.StopRepairing();
-                    }
                 }
             }
             else
@@ -90,8 +92,11 @@ public class PlayerActions : MonoBehaviour
             paralyzed = true;
             paralyzeTime = maxParalyzeTime;
 
+            source.clip = hitClips[UnityEngine.Random.Range(0, 6)];
+            source.Play();
+
             if (PlayerHasLog())
-                playerGrabbing.ToggleGrabRelease();
+                playerGrabbing.ToggleGrabRelease(true);
         }
     }
 }

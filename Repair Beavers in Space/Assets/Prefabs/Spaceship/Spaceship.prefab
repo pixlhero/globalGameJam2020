@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1918745124191355526}
   - component: {fileID: 1918745124191355527}
   - component: {fileID: 1918745124191355525}
-  - component: {fileID: 1918745124191355524}
   - component: {fileID: 1918745124191355530}
   m_Layer: 9
   m_Name: Spaceship
@@ -73,7 +72,7 @@ MonoBehaviour:
   hullDamagePrefab: {fileID: 3696089492126278873, guid: 68985fea5a861984083126f4e9e510d1,
     type: 3}
   size: 3
-  maxHealth: 200
+  maxHealth: 400
   health: 0
   time: 0
   timeOfArrival: 120
@@ -117,19 +116,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.5
---- !u!114 &1918745124191355524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1918745124191355523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8da2e486e3e0b04da0583655fe537c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numberOfPlayers: 3
 --- !u!114 &1918745124191355530
 MonoBehaviour:
   m_ObjectHideFlags: 0

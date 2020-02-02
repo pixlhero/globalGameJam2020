@@ -112,6 +112,11 @@ public class HullDamage : MonoBehaviour
             var playerActions = collision.GetComponent<PlayerRepairState>();
 
             playerActions.HullDamageIsNear(this);
+            return;
+        }
+        if (collision.gameObject.tag == "Asteroid")
+        {
+            Destroy(collision.gameObject);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

@@ -68,7 +68,7 @@ public class PlayerOrganiser : MonoBehaviour
 
         //Player Model
         Destroy(player.transform.Find("model 1").gameObject);
-        var model = Instantiate(playerModels[controllerNumber], Spaceship.Position + dir * playerRadius, Quaternion.identity, player.transform);
+        var model = Instantiate(playerModels[playerNumber], Spaceship.Position + dir * playerRadius, Quaternion.identity, player.transform);
 
         model.transform.localRotation = Quaternion.Euler(0, -90, 0);
 
