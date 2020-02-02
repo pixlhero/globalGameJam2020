@@ -10,12 +10,18 @@ public class GameScreen : UIScreen
         this.gameObject.SetActive(false);
         SceneManager.UnloadSceneAsync("GameplayScene");
         FindObjectOfType<SkyboxRotation>().SpeedUpShortly();
+
+        FindObjectOfType<Soundtrack>().PlayCalmSound();
+
     }
 
     public override void Show()
     {
         this.gameObject.SetActive(true);
         SceneManager.LoadScene("GameplayScene", LoadSceneMode.Additive);
+
+        FindObjectOfType<Soundtrack>().PlayGameSound();
+
     }
     private void Update()
     {
