@@ -1,0 +1,142 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1918745124191355523
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1918745124191355521}
+  - component: {fileID: 1918745124191355520}
+  - component: {fileID: 1918745124191355526}
+  - component: {fileID: 1918745124191355527}
+  - component: {fileID: 1918745124191355525}
+  - component: {fileID: 1918745124191355524}
+  - component: {fileID: 1918745124191355530}
+  m_Layer: 9
+  m_Name: Spaceship
+  m_TagString: Spaceship
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1918745124191355521
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918745124191355523}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1918745124191355520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918745124191355523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d88d76889f9f7548a5d408ad036cffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnRadius: 25
+  aspectRatio: 1.7
+  debrisAnchor: {fileID: 0}
+  asteroidPrefab: {fileID: 3140515301790403636, guid: bf4ea0fcf6ffb3a41b27189107f32bd5,
+    type: 3}
+  logPrefab: {fileID: 7715237441246552826, guid: df0c48a9dfd4aaa47b9a42a5d7cb3197,
+    type: 3}
+  testDeltaTime: 2
+--- !u!114 &1918745124191355526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918745124191355523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf3f39e8e8af15345a8764b16426c16c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hullDamagePrefab: {fileID: 3696089492126278873, guid: 68985fea5a861984083126f4e9e510d1,
+    type: 3}
+  size: 2.5
+  maxHealth: 200
+  health: 0
+  time: 0
+  timeOfArrival: 600
+  damages: []
+--- !u!114 &1918745124191355527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918745124191355523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269d2958c0a37324fafabc2b6c0bc2d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 4079658687753334505, guid: 755d6f2e67efe2949ab5989c6a9a7ddb,
+    type: 3}
+  safetyLinePrefab: {fileID: 946757324284517777, guid: eac87749295c5cf4aa4cddcd402090fd,
+    type: 3}
+  playerModels:
+  - {fileID: 7933479455236213248, guid: 6fa5a9fd2ee339346bca02d3ae24b490, type: 3}
+  - {fileID: 6687510926856597587, guid: 1914ccf33f9432742b13da87585d8473, type: 3}
+  - {fileID: 7815466892214349210, guid: fa0ee14b9dec5ed408a2588b61784929, type: 3}
+  - {fileID: 8851882501850484672, guid: ee7ca171c8d86d644be1578a2e1f91ae, type: 3}
+  playerCount: 4
+--- !u!58 &1918745124191355525
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918745124191355523}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.5
+--- !u!114 &1918745124191355524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918745124191355523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8da2e486e3e0b04da0583655fe537c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfPlayers: 3
+--- !u!114 &1918745124191355530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918745124191355523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b52d2a8b111015428eb89d6d0586fe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startTransitionTime: 5

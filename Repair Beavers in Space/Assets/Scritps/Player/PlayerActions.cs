@@ -10,6 +10,7 @@ public class PlayerActions : MonoBehaviour
     public PlayerMovement playerMovement;
     public PlayerGrabbing playerGrabbing;
     public PlayerRepairState playerRepairState;
+    public PlayerAnimator playerAnimator;
 
     [SerializeField] bool paralyzed;
     float paralyzeTime;
@@ -34,6 +35,7 @@ public class PlayerActions : MonoBehaviour
                     if (Input.GetButtonDown(Flap))
                     {
                         playerMovement.Flap();
+                        playerAnimator.Flap();
                     }
 
                     if (Input.GetButtonDown(Grab))
@@ -65,6 +67,9 @@ public class PlayerActions : MonoBehaviour
                 if (paralyzeTime <= 0)
                     paralyzed = false;
             }
+
+            playerAnimator.IsGrabbing(PlayerHasLog());
+            playerAnimator.IsRepairing(playerRepairState.IsRepairing());
         }
     }
 
