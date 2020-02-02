@@ -8,6 +8,10 @@ public class CutscenesScreen : UIScreen
 {
     public Sprite[] cutscenesInOrder;
 
+    private AudioSource source;
+
+    public AudioClip[] clips;
+
     public Transform cutsceneParent;
 
     public Image CutsceneImage;
@@ -22,7 +26,6 @@ public class CutscenesScreen : UIScreen
 
         group.DOFade(0, 1.5f);
 
-
         FindObjectOfType<SkyboxRotation>().SpeedUpShortly();
 
         cutsceneParent.DOMoveX(cutsceneParent.position.x - 700, 1.5f).SetEase(Ease.InSine).OnComplete(() => {
@@ -34,8 +37,10 @@ public class CutscenesScreen : UIScreen
 
     public override void Show()
     {
-        this.gameObject.SetActive(true);
 
+        source = GetComponent<AudioSource>();
+
+        this.gameObject.SetActive(true);
 
         FindObjectOfType<SkyboxRotation>().SpeedUpShortly();
 
@@ -46,6 +51,8 @@ public class CutscenesScreen : UIScreen
         CanvasGroup group = this.GetComponent<CanvasGroup>();
         group.alpha = 0;
         group.DOFade(1, 1).SetDelay(1);
+
+        PlayNextClip(0);
 
     }
     private void Update()
@@ -60,9 +67,13 @@ public class CutscenesScreen : UIScreen
             {
                 currentCutsceneIndex++;
 
+                PlayNextClip(currentCutsceneIndex);
+
                 canRotate = false;
 
                 CanvasGroup group = cutsceneParent.GetComponent<CanvasGroup>();
+                
+
 
                 group.DOFade(0, 1.5f).SetEase(Ease.InSine).OnComplete(() => {
                     group.DOFade(1, 1.5f);
@@ -78,6 +89,31 @@ public class CutscenesScreen : UIScreen
             }
         }
 
+    }
+
+    private void PlayNextClip(int index)
+    {
+        if(index == 0)
+        {
+            source.volume = 0;
+            source.clip = clips[index];
+            source.DOFade(1, 0.5f);
+            source.Play();
+        }
+        else
+        {
+            source.DOFade(0, 2).OnComplete(() =>
+            {
+                source.Stop();
+                source.clip = clips[index];
+                if(source.clip != null)
+                {
+                    source.Play();
+                }
+                source.DOFade(1, 0.5f);
+            });
+
+        }
     }
 
     private bool TestForNextScene()
