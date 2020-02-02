@@ -123,7 +123,8 @@ public class HullDamage : MonoBehaviour
         }
         if (collision.gameObject.tag == "Asteroid")
         {
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
+            collision.GetComponent<Asteroid>().Explode();
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
