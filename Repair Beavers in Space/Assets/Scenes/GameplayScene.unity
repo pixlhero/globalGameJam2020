@@ -382,6 +382,11 @@ PrefabInstance:
       propertyPath: debrisAnchor
       value: 
       objectReference: {fileID: 1549572993}
+    - target: {fileID: 1918745124191355526, guid: 05c38026601d4b54fad25afc9f614c90,
+        type: 3}
+      propertyPath: timeOfArrival
+      value: 115
+      objectReference: {fileID: 0}
     - target: {fileID: 1918745124191355527, guid: 05c38026601d4b54fad25afc9f614c90,
         type: 3}
       propertyPath: playerAnchor

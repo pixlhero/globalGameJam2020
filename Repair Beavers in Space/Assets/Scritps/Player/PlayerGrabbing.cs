@@ -29,7 +29,7 @@ public class PlayerGrabbing : MonoBehaviour
             grabTime = 0;
     }
 
-    public void ToggleGrabRelease()
+    public void ToggleGrabRelease(bool force = false)
     {
         if (heldObject == null)
         {
@@ -41,7 +41,7 @@ public class PlayerGrabbing : MonoBehaviour
         }
         else
         {
-            ExecuteRelease();
+            ExecuteRelease(force);
         }
     }
 
@@ -57,10 +57,12 @@ public class PlayerGrabbing : MonoBehaviour
         heldObject = grabbable;
     }
 
-    private void ExecuteRelease()
+    private void ExecuteRelease(bool force)
     {
-        if (grabTime >= 1)
+        Debug.Log(force);
+        if (grabTime >= 1 || force)
         {
+            Debug.Log("Released");
             heldObject.TogglePhysics(true);
 
             heldObject.transform.position = releaseAnchor.position;

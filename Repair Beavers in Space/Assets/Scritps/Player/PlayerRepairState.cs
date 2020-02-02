@@ -41,12 +41,15 @@ public class PlayerRepairState : MonoBehaviour
     {
         return currentlyRepairing != null;
     }
-    public bool CanStartRepairing(bool playerHasLog)
+    public bool CanStartRepairing(bool playerHasLog, out bool dropLog)
     {
+        dropLog = false;
         if (hullDamage == null)
             return false;
 
-        return ((hullDamage.HasLog() && !playerHasLog) || (!hullDamage.HasLog() && playerHasLog)) && hullDamage.CanJoinRepair;
+        dropLog = hullDamage.HasLog();
+
+        return (hullDamage.HasLog() || (!hullDamage.HasLog() && playerHasLog)) && hullDamage.CanJoinRepair;
     }
     public void HullDamageIsNear(HullDamage hd)
     {
