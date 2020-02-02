@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1918745124191355523}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 4623378468234081704}
   - {fileID: 4553371881256299877}
@@ -70,9 +70,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf3f39e8e8af15345a8764b16426c16c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  milkBar: {fileID: 0}
   hullDamagePrefab: {fileID: 3696089492126278873, guid: 68985fea5a861984083126f4e9e510d1,
     type: 3}
-  size: 2.5
+  size: 3
   maxHealth: 200
   health: 0
   time: 0

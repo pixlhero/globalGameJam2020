@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     [Header("Transitions")]
     public int startTransitionTime = 5;
 
+    float time;
+    public float spawnTimeStep = 3;
+
     private void Awake()
     {
         if (SceneManager.GetActiveScene().buildIndex == 2)
@@ -27,12 +30,33 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Spawner.SpawnWood();
+        Spawner.SpawnWood();
+
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("GameplayScene"));
         instance = this;
 
         Camera.main.transform.DORotate(Vector3.zero, startTransitionTime);
 
         StartCoroutine("StartDelay");
+    }
+
+    private void Update()
+    {
+        if (CurrentState == State.gameplay)
+        {
+            if (Time.time >= time + spawnTimeStep)
+            {
+                time = Time.time;
+                if (HullDamage.CURRENT_LEAKS < PlayerOrganiser.instance.PlayerCount + 1)
+                {
+                    Spawner.SpawnAsteroid();
+                }
+
+                if (Log.LOG_COUNT < HullDamage.CURRENT_LEAKS)
+                    Spawner.SpawnWood();
+            }
+        }
     }
 
     IEnumerator StartDelay()
