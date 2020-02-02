@@ -8,7 +8,7 @@ public class PlayerSelectScreen : UIScreen{
 
     public SelectChain Chain;
 
-    public GameObject StartPrompt;
+    public CanvasGroup StartPrompt;
     public override void Hide()
     {
         transform.DOMove(this.transform.position + new Vector3(-1000, 0, 0), 1).SetEase(Ease.InSine).OnComplete(()=> {
@@ -22,7 +22,9 @@ public class PlayerSelectScreen : UIScreen{
 
     public override void Show()
     {
-        StartPrompt.SetActive(false);
+        StartPrompt.gameObject.SetActive(false);
+        StartPrompt.alpha = 0;
+
         this.gameObject.SetActive(true);
 
         FindObjectOfType<SkyboxRotation>().SpeedUpShortly();
@@ -74,6 +76,8 @@ public class PlayerSelectScreen : UIScreen{
 
     private void EnableStart()
     {
-        StartPrompt.SetActive(true);
+        StartPrompt.gameObject.SetActive(true);
+        StartPrompt.DOFade(1, 1);
+
     }
 }

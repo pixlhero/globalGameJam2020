@@ -8,6 +8,8 @@ public class GameScreen : UIScreen
     public override void Hide()
     {
         this.gameObject.SetActive(false);
+        SceneManager.UnloadSceneAsync("GameplayScene");
+        FindObjectOfType<SkyboxRotation>().SpeedUpShortly();
     }
 
     public override void Show()
@@ -17,9 +19,14 @@ public class GameScreen : UIScreen
     }
     private void Update()
     {
-        if (Input.GetButtonDown("Start"))
+        if (Input.GetKeyDown(KeyCode.U))
         {
             UIManager.Singleton.SwitchToState(UIManager.UIState.WIN);
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            UIManager.Singleton.SwitchToState(UIManager.UIState.LOOSE);
         }
     }
 }

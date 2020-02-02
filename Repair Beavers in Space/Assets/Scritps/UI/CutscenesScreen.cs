@@ -57,6 +57,11 @@ public class CutscenesScreen : UIScreen
     }
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            this.Hide();
+        }
+
         if (TestForNextScene())
         {
             if (currentCutsceneIndex >= cutscenesInOrder.Length - 1)

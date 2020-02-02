@@ -18,7 +18,8 @@ public class UIManager : MonoBehaviour
         CUTSCENES,
         GAME,
         LOOSE,
-        WIN
+        WIN,
+        CREDITS
     }
 
     private UIState _currentState;
@@ -69,7 +70,4 @@ public class UIManager : MonoBehaviour
         int sceneID = (int)_currentState;
         scenesInOrder[sceneID].Hide();
     }
-
-
-
 }
