@@ -16,6 +16,9 @@ public class HullDamage : MonoBehaviour
     public Transform repairAnchorRight;
     public Transform repairAnchorLeft;
 
+    public AudioClip[] clips = new AudioClip[5];
+    public AudioSource sfxSource;
+
     float repairTime;
     public float maxRepairTime = 5;
 
@@ -28,6 +31,9 @@ public class HullDamage : MonoBehaviour
     {
         logHeight = logAnchor.localPosition.y;
         CURRENT_LEAKS++;
+
+        sfxSource.clip = clips[UnityEngine.Random.Range(0, 5)];
+        sfxSource.Play();
     }
 
     private void Update()
