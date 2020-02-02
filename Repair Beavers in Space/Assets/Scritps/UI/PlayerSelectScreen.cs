@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerSelectScreen : UIScreen{
     public int MinAmountOfPlayers = 1;
 
+    public AudioSource[] AudioSources;
+
     public SelectChain Chain;
 
     public CanvasGroup StartPrompt;
@@ -67,6 +69,12 @@ public class PlayerSelectScreen : UIScreen{
         ControllerMapping.SetMapping(controllerID, nextFreeType);
 
         Chain.AddChain();
+
+        for(int i = 0; i < ControllerMapping.NumberOfRegisteredPlayers; i++)
+        {
+            AudioSources[i].Stop();
+            AudioSources[i].Play();
+        }
 
         if (ControllerMapping.NumberOfRegisteredPlayers >= MinAmountOfPlayers)
         {
