@@ -385,7 +385,7 @@ PrefabInstance:
     - target: {fileID: 1918745124191355526, guid: 05c38026601d4b54fad25afc9f614c90,
         type: 3}
       propertyPath: timeOfArrival
-      value: 115
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1918745124191355527, guid: 05c38026601d4b54fad25afc9f614c90,
         type: 3}

@@ -72,10 +72,10 @@ MonoBehaviour:
   hullDamagePrefab: {fileID: 3696089492126278873, guid: 68985fea5a861984083126f4e9e510d1,
     type: 3}
   size: 3
-  maxHealth: 400
+  maxHealth: 300
   health: 0
   time: 0
-  timeOfArrival: 120
+  timeOfArrival: 115
   damages: []
 --- !u!114 &1918745124191355527
 MonoBehaviour:

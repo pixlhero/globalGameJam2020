@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
     public void SetWinState()
     {
         CurrentState = State.win;
-        UIManager.Singleton.SwitchToState(UIManager.UIState.LOOSE);
+        UIManager.Singleton.SwitchToState(UIManager.UIState.WIN);
     }
 
     public void SetLoseState()

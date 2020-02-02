@@ -102,6 +102,7 @@ public class HullDamage : MonoBehaviour
     void FixDamage()
     {
         var fx = Instantiate(repairedEffect, transform.position, transform.rotation, transform);
+        fx.transform.localRotation = Quaternion.Euler(-90, 0, 0);
         fx.transform.parent = null;
 
 
