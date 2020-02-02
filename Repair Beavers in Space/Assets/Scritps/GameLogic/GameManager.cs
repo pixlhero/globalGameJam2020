@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("GameplayScene"));
         instance = this;
 
         Camera.main.transform.DORotate(Vector3.zero, startTransitionTime);

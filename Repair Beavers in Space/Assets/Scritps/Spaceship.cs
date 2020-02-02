@@ -24,6 +24,7 @@ public class Spaceship : MonoBehaviour
         }
     }
 
+    public MilkBar milkBar;
     public GameObject hullDamagePrefab;
     public float size = 5;
 
@@ -52,13 +53,16 @@ public class Spaceship : MonoBehaviour
             if (time <= 0)
             {
                 GameManager.instance.SetWinState();
+                return;
             }
 
             if (health <= 0)
             {
                 GameManager.instance.SetLoseState();
+                return;
             }
         }
+        milkBar.fillStand = health / maxHealth;
     }
 
     public void CreateHullDamage(Vector2 position)
