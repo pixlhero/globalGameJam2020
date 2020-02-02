@@ -23,8 +23,9 @@ public class Asteroid : SpaceObject
         Explode();
     }
 
-    void Explode()
+    public void Explode()
     {
+        ScreenShake.Shake();
         Destroy(gameObject);
     }
 
