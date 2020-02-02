@@ -105,6 +105,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 26995d3dda3631d43af86918a9d94f92, type: 3}
   - {fileID: 8300000, guid: 2c353e3c975b6dc41af2eefcbf4cf896, type: 3}
   sfxSource: {fileID: 2119427834004647483}
+  repairedEffect: {fileID: 1202597679806372655, guid: ebba29553d36e1848b298a13b596279a,
+    type: 3}
   maxRepairTime: 5
 --- !u!82 &2119427834004647483
 AudioSource:

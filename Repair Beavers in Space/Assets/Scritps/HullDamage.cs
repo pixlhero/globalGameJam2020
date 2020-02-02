@@ -19,6 +19,8 @@ public class HullDamage : MonoBehaviour
     public AudioClip[] clips = new AudioClip[5];
     public AudioSource sfxSource;
 
+    public GameObject repairedEffect;
+
     float repairTime;
     public float maxRepairTime = 5;
 
@@ -99,6 +101,10 @@ public class HullDamage : MonoBehaviour
 
     void FixDamage()
     {
+        var fx = Instantiate(repairedEffect, transform.position, transform.rotation, transform);
+        fx.transform.parent = null;
+
+
         OnRepaired?.Invoke();
         Destroy(gameObject);
 
