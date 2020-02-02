@@ -41,11 +41,11 @@ public class CutscenesScreen : UIScreen
 
         Vector3 originalPosition = this.transform.position;
         this.transform.position += new Vector3(1000, 0, 0);
-        transform.DOMove(originalPosition, 1);
+        transform.DOMove(originalPosition, 1).SetDelay(1);
 
         CanvasGroup group = this.GetComponent<CanvasGroup>();
         group.alpha = 0;
-        group.DOFade(1, 1);
+        group.DOFade(1, 1).SetDelay(1);
 
     }
     private void Update()
