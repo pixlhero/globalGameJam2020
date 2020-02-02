@@ -59,7 +59,7 @@ public class CutscenesScreen : UIScreen
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            this.Hide();
+            UIManager.Singleton.SwitchToState(UIManager.UIState.GAME);
         }
 
         if (TestForNextScene())

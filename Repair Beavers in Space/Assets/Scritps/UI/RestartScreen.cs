@@ -29,6 +29,8 @@ public class RestartScreen : UIScreen
     }
     private void Update()
     {
-        // TODO
+        if(Input.GetButtonDown("Start")){
+            UIManager.Singleton.SwitchToState(UIManager.UIState.CREDITS);
+        }
     }
 }
